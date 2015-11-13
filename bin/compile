@@ -74,7 +74,7 @@ sed -i -e "s#/etc/dd-agent#/app/.apt/etc/dd-agent#" $DD_AGENT_START_SCRIPT
 
 sed -i -e "s#/opt/datadog-agent#/app/.apt/opt/datadog-agent#" $DD_SUPERVISORD
 sed -i -e "s#/opt/datadog-agent#/app/.apt/opt/datadog-agent#" $DD_SUPERVISORD_CONF
-sed -i -e "s#/var/log/datadog/supervisord.log#/dev/null#"
+sed -i -e "s#/var/log/datadog/supervisord.log#/dev/null#" $DD_SUPERVISORD_CONF
 
 #AGENTCONF="/etc/dd-agent/datadog.conf"
 
