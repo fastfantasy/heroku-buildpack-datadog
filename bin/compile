@@ -30,7 +30,7 @@ APT_OPTIONS="-o debug::nolocking=true -o Dir::Etc::Trusted=$GPG_KEYRING_FILE -o 
 # Where the Agent is installed & configured
 DD_AGENT_ROOT="$APT_BUILD_DIR"
 DD_AGENT_CONF="$DD_AGENT_ROOT/opt/datadog-agent/agent/datadog.conf"
-DD_AGENT_START_SCRIPT = "$DD_AGENT_ROOT/etc/init.d/datadog-agent"
+DD_AGENT_START_SCRIPT="$DD_AGENT_ROOT/etc/init.d/datadog-agent"
 
 # Ensure directories exists
 mkdir -p "$CACHE_DIR"
