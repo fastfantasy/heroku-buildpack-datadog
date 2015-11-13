@@ -22,6 +22,6 @@ fi
   #exec /app/.apt/opt/datadog-agent/embedded/bin/python /app/.apt/opt/datadog-agent/agent/agent.py start 
   echo "Started Data Dog agent"
   #exec /app/.apt/opt/datadog-agent/embedded/bin/python /app/.apt/opt/datadog-agent/agent/ddagent.py &
-  exect /app/.apt/etc/init.d/datadog-agent start
+  exec /app/.apt/etc/init.d/datadog-agent start
 
 )
