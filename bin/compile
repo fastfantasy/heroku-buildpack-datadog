@@ -30,6 +30,7 @@ APT_OPTIONS="-o debug::nolocking=true -o Dir::Etc::Trusted=$GPG_KEYRING_FILE -o 
 # Where the Agent is installed & configured
 DD_AGENT_ROOT="$APT_BUILD_DIR"
 DD_AGENT_CONF="$DD_AGENT_ROOT/opt/datadog-agent/agent/datadog.conf"
+DD_AGENT_START_SCRIPT = "$DD_AGENT_ROOT/etc/init.d/datadog-agent"
 
 # Ensure directories exists
 mkdir -p "$CACHE_DIR"
@@ -60,6 +61,17 @@ mv $DD_AGENT_ROOT/etc/dd-agent/datadog.conf.example $DD_AGENT_CONF
 
 # Turn off syslog
 sed -i -e"s/^.*log_to_syslog:.*$/log_to_syslog: no/" $DD_AGENT_CONF
+
+topic "Re-writing the paths in the agent start script"
+
+sed -i -e "s#/opt/datadog-agent#/app/.apt/opt/datadog-agent#" $DD_AGENT_START_SCRIPT
+#/etc/dd-agent -> /app/.apt/etc/dd-agent
+#this is actually in /app/.apt/opt/datadog-agent/agent/datadog.conf
+sed -i -e "s#/etc/dd-agent/datadog.conf#/app/.apt/opt/datadog-agent/agent/datadog.conf#" $DD_AGENT_START_SCRIPT
+sed -i -e "s#/etc/dd-agent#/app/.apt/dd-agent/dd-agent#" $DD_AGENT_START_SCRIPT
+
+
+#AGENTCONF="/etc/dd-agent/datadog.conf"
 
 # Drop off the runner
 mkdir -p $BUILD_DIR/.profile.d
