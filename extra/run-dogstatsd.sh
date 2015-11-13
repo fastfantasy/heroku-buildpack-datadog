@@ -22,6 +22,6 @@ fi
 
 PATH=/.apt/opt/datadog-agent/embedded/bin:/opt/datadog-agent/bin:$PATH
 
-exec /app/.apt/opt/datadog-agent/bin/supervisord -c /app/.apt/etc/dd-agent/supervisor.conf
+#exec /app/.apt/opt/datadog-agent/bin/supervisord -c /app/.apt/etc/dd-agent/supervisor.conf
 
 )
