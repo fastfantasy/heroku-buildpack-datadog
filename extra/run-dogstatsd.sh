@@ -16,7 +16,12 @@ fi
 
 (
   # Load our library path first when starting up
-  export LD_LIBRARY_PATH=/app/.apt/opt/datadog-agent/embedded/lib:$LD_LIBRARY_PATH
+  #export LD_LIBRARY_PATH=/app/.apt/opt/datadog-agent/embedded/lib:$LD_LIBRARY_PATH
   #exec /app/.apt/opt/datadog-agent/embedded/bin/python /app/.apt/opt/datadog-agent/agent/dogstatsd.py start
-  exec /app/.apt/opt/datadog-agent/embedded/bin/python /app/.apt/opt/datadog-agent/agent/ddagent.py &
+  #exec /app/.apt/opt/datadog-agent/embedded/bin/python /app/.apt/opt/datadog-agent/agent/ddagent.py &
+
+PATH=/.apt/opt/datadog-agent/embedded/bin:/opt/datadog-agent/bin:$PATH
+
+exec /.apt/opt/datadog-agent/bin/supervisord -c /etc/dd-agent/supervisor.conf
+
 )
