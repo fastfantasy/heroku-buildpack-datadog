@@ -50,6 +50,9 @@ apt-get $APT_OPTIONS update | indent
 topic "Fetching datadog-agent"
 apt-get $APT_OPTIONS -y --force-yes -d install --reinstall --no-install-recommends datadog-agent | indent
 
+topic "Installing sysstat"
+apt-get $APT_OPTIONS -y --force-yes -d install --reinstall sysstat
+
 topic "Fetching deb packages"
 for DEB in $(ls -1 $APT_CACHE_DIR/archives/*.deb); do
   topic "Installing $(basename $DEB)"
@@ -64,6 +67,6 @@ sed -i -e"s/^.*log_to_syslog:.*$/log_to_syslog: no/" $DD_AGENT_CONF
 # Drop off the runner
 mkdir -p $BUILD_DIR/.profile.d
 cp $BUILDPACK_DIR/extra/run-dogstatsd.sh $BUILD_DIR/.profile.d/
-cp $BUILDPACK_DIR/extra/supervisord $DD_AGENT_ROOT/opt/datadog-agent/bin/supervisord
+#cp $BUILDPACK_DIR/extra/supervisord $DD_AGENT_ROOT/opt/datadog-agent/bin/supervisord
 chmod +x $BUILD_DIR/.profile.d/run-dogstatsd.sh
 topic "Datadog Agent package installed"
