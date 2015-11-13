@@ -71,7 +71,8 @@ sed -i -e "s#/opt/datadog-agent#/app/.apt/opt/datadog-agent#" $DD_AGENT_START_SC
 #this is actually in /app/.apt/opt/datadog-agent/agent/datadog.conf
 sed -i -e "s#/etc/dd-agent/datadog.conf#/app/.apt/opt/datadog-agent/agent/datadog.conf#" $DD_AGENT_START_SCRIPT
 sed -i -e "s#/etc/dd-agent#/app/.apt/etc/dd-agent#" $DD_AGENT_START_SCRIPT
-sed -i -e "s#AGENTUSER="dd-agent"#AGENTUSER=\"$USER\"#" $DD_AGENT_START_SCRIPT
+topic "updating dd user to $USER"
+sed -i -e "s#AGENTUSER=\"dd-agent\"#AGENTUSER=\"$USER\"#" $DD_AGENT_START_SCRIPT
 
 sed -i -e "s#/opt/datadog-agent#/app/.apt/opt/datadog-agent#" $DD_SUPERVISORD
 sed -i -e "s#/opt/datadog-agent#/app/.apt/opt/datadog-agent#" $DD_SUPERVISORD_CONF
