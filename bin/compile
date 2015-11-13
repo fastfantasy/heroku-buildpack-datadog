@@ -32,6 +32,7 @@ DD_AGENT_ROOT="$APT_BUILD_DIR"
 DD_AGENT_CONF="$DD_AGENT_ROOT/opt/datadog-agent/agent/datadog.conf"
 DD_AGENT_START_SCRIPT="$DD_AGENT_ROOT/etc/init.d/datadog-agent"
 DD_SUPERVISORD="$DD_AGENT_ROOT/opt/datadog-agent/bin/supervisord"
+DD_SUPERVISORD_CONF="$DD_AGENT_ROOT/etc/dd-agent/supervisor.conf"
 
 # Ensure directories exists
 mkdir -p "$CACHE_DIR"
@@ -72,6 +73,8 @@ sed -i -e "s#/etc/dd-agent/datadog.conf#/app/.apt/opt/datadog-agent/agent/datado
 sed -i -e "s#/etc/dd-agent#/app/.apt/etc/dd-agent#" $DD_AGENT_START_SCRIPT
 
 sed -i -e "s#/opt/datadog-agent#/app/.apt/opt/datadog-agent#" $DD_SUPERVISORD
+sed -i -e "s#/opt/datadog-agent#/app/.apt/opt/datadog-agent#" $DD_SUPERVISORD_CONF
+sed -i -e "s#/var/log/datadog/supervisord.log#/dev/null#"
 
 #AGENTCONF="/etc/dd-agent/datadog.conf"
 
