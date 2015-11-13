@@ -71,7 +71,7 @@ sed -i -e "s#/opt/datadog-agent#/app/.apt/opt/datadog-agent#" $DD_AGENT_START_SC
 sed -i -e "s#/etc/dd-agent/datadog.conf#/app/.apt/opt/datadog-agent/agent/datadog.conf#" $DD_AGENT_START_SCRIPT
 sed -i -e "s#/etc/dd-agent#/app/.apt/dd-agent/dd-agent#" $DD_AGENT_START_SCRIPT
 
-sed -i -e "s#/opt/datadog-agent#/app/.apt/opt/datadog-agent" $DD_SUPERVISORD
+sed -i -e "s#/opt/datadog-agent#/app/.apt/opt/datadog-agent#" $DD_SUPERVISORD
 
 #AGENTCONF="/etc/dd-agent/datadog.conf"
 
