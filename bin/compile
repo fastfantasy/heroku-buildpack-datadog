@@ -77,7 +77,7 @@ sed -i -e "s#AGENTUSER=\"dd-agent\"#AGENTUSER=\"$USER\"#" $DD_AGENT_START_SCRIPT
 sed -i -e "s#/opt/datadog-agent#/app/.apt/opt/datadog-agent#" $DD_SUPERVISORD
 sed -i -e "s#/opt/datadog-agent#/app/.apt/opt/datadog-agent#" $DD_SUPERVISORD_CONF
 sed -i -e "s#/var/log/datadog/supervisord.log#/dev/null#" $DD_SUPERVISORD_CONF
-sed -i -e "s#su $AGENTUSER -c##" $DD_AGENT_START_SCRIPT
+sed -i -e "s#su \$AGENTUSER -c##" $DD_AGENT_START_SCRIPT
 
 #AGENTCONF="/etc/dd-agent/datadog.conf"
 
